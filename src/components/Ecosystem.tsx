@@ -17,41 +17,6 @@ const Ecosystem = () => {
       description: "Energy trading & metering infrastructure",
       category: "Energy",
     },
-    {
-      name: "Gitmatrix Power & Infrastructure",
-      description: "Pipelines, fibre-optic monitoring & engineering",
-      category: "Infrastructure",
-    },
-    {
-      name: "Gitmatrix Group",
-      description: "Infrastructure investment & technology",
-      category: "Investment",
-    },
-    {
-      name: "STS Association",
-      description: "Metering consortium & standards",
-      category: "Standards",
-    },
-    {
-      name: "SwitchBox Limited",
-      description: "Hardware manufacturing & solutions",
-      category: "Hardware",
-    },
-    {
-      name: "BraveRock Limited",
-      description: "Property & facility solutions",
-      category: "Property",
-    },
-    {
-      name: "Seentrad Coating",
-      description: "Industrial finishing & coating",
-      category: "Industrial",
-    },
-    {
-      name: "Quaint Energy",
-      description: "Energy project collaborations",
-      category: "Energy",
-    },
   ];
 
   const categoryColors: Record<string, string> = {
@@ -77,7 +42,7 @@ const Ecosystem = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 lg:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-4xl mx-auto">
           {subsidiaries.map((subsidiary, index) => (
             <div
               key={index}
