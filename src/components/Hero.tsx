@@ -7,14 +7,43 @@ const Hero = () => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Animated Background */}
       <div className="absolute inset-0">
+        {/* Base Background Image */}
         <div 
-          className="absolute inset-0 bg-cover bg-center opacity-30"
+          className="absolute inset-0 bg-cover bg-center opacity-50 animate-pulse-slow"
           style={{ backgroundImage: `url(${heroBg})` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-background via-background/80 to-background" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(56,189,248,0.1),transparent_50%)]" />
-        <div className="absolute top-1/4 -left-48 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-1/4 -right-48 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-float" style={{ animationDelay: "1s" }} />
+        
+        {/* Animated Gradient Overlays */}
+        <div className="absolute inset-0 bg-gradient-to-br from-background via-background/60 to-background" />
+        
+        {/* Flowing Energy Waves */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/30 via-secondary/30 to-primary/30 animate-wave" 
+               style={{ backgroundSize: '200% 100%' }} />
+          <div className="absolute inset-0 bg-gradient-to-l from-secondary/20 via-primary/20 to-secondary/20 animate-wave-reverse" 
+               style={{ backgroundSize: '200% 100%', animationDelay: '1s' }} />
+        </div>
+        
+        {/* Radial Glow Effects */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(56,189,248,0.15),transparent_50%)] animate-glow-pulse" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(34,211,238,0.15),transparent_50%)] animate-glow-pulse" 
+             style={{ animationDelay: '1.5s' }} />
+        
+        {/* Floating Orbs */}
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/30 rounded-full blur-3xl animate-float-slow" />
+        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-secondary/25 rounded-full blur-3xl animate-float-slower" 
+             style={{ animationDelay: '1s' }} />
+        <div className="absolute bottom-1/4 left-1/3 w-80 h-80 bg-primary/20 rounded-full blur-3xl animate-float" 
+             style={{ animationDelay: '2s' }} />
+        
+        {/* Particle Effect */}
+        <div className="absolute inset-0 opacity-40">
+          <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-primary rounded-full animate-particle-1" />
+          <div className="absolute top-1/3 right-1/3 w-3 h-3 bg-secondary rounded-full animate-particle-2" />
+          <div className="absolute bottom-1/3 left-1/2 w-2 h-2 bg-primary rounded-full animate-particle-3" />
+          <div className="absolute top-2/3 right-1/4 w-3 h-3 bg-secondary rounded-full animate-particle-4" />
+          <div className="absolute bottom-1/4 right-1/2 w-2 h-2 bg-primary rounded-full animate-particle-5" />
+        </div>
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
