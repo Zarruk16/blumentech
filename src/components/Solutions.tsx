@@ -1,5 +1,6 @@
 import { Wallet, Database, Activity, Cpu, Building2, Code } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import infrastructureBg from "@/assets/infrastructure-bg.jpg";
 
 const Solutions = () => {
   const solutions = [
@@ -42,8 +43,16 @@ const Solutions = () => {
   ];
 
   return (
-    <section id="solutions" className="py-20 md:py-32 bg-background">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="solutions" className="py-20 md:py-32 bg-background relative overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-10"
+          style={{ backgroundImage: `url(${infrastructureBg})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background" />
+      </div>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-6">
             Core <span className="text-gradient">Business Domains</span>
