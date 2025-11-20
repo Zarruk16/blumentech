@@ -28,12 +28,14 @@ const Hero = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button size="lg" className="group text-base px-8 glow-primary">
-              Explore Our Solutions
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <Button size="lg" className="group text-base px-8 glow-primary" asChild>
+              <a href="#solutions">
+                Explore Our Solutions
+                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </a>
             </Button>
-            <Button size="lg" variant="outline" className="text-base px-8 border-primary/50 hover:bg-primary/10">
-              Partner With Us
+            <Button size="lg" variant="outline" className="text-base px-8 border-primary/50 hover:bg-primary/10" asChild>
+              <a href="#contact">Partner With Us</a>
             </Button>
           </div>
 
