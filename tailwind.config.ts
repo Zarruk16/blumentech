@@ -123,6 +123,48 @@ export default {
           "50%": {
             transform: "translateY(-10px)"
           }
+        },
+        "pulse-slow": {
+          "0%, 100%": {
+            opacity: "0.3"
+          },
+          "50%": {
+            opacity: "0.6"
+          }
+        },
+        "wave": {
+          "0%": {
+            backgroundPosition: "0% 50%"
+          },
+          "100%": {
+            backgroundPosition: "200% 50%"
+          }
+        },
+        "wave-reverse": {
+          "0%": {
+            backgroundPosition: "200% 50%"
+          },
+          "100%": {
+            backgroundPosition: "0% 50%"
+          }
+        },
+        "particle-float": {
+          "0%, 100%": {
+            transform: "translate(0, 0) scale(1)",
+            opacity: "0.3"
+          },
+          "25%": {
+            transform: "translate(20px, -30px) scale(1.2)",
+            opacity: "0.8"
+          },
+          "50%": {
+            transform: "translate(-15px, -60px) scale(0.8)",
+            opacity: "0.5"
+          },
+          "75%": {
+            transform: "translate(30px, -30px) scale(1.1)",
+            opacity: "0.7"
+          }
         }
       },
       animation: {
@@ -132,6 +174,16 @@ export default {
         "fade-in-up": "fade-in-up 0.8s ease-out",
         "glow-pulse": "glow-pulse 3s ease-in-out infinite",
         "float": "float 3s ease-in-out infinite",
+        "float-slow": "float 6s ease-in-out infinite",
+        "float-slower": "float 8s ease-in-out infinite",
+        "pulse-slow": "pulse-slow 4s ease-in-out infinite",
+        "wave": "wave 8s linear infinite",
+        "wave-reverse": "wave-reverse 10s linear infinite",
+        "particle-1": "particle-float 5s ease-in-out infinite",
+        "particle-2": "particle-float 6s ease-in-out infinite 1s",
+        "particle-3": "particle-float 7s ease-in-out infinite 2s",
+        "particle-4": "particle-float 5.5s ease-in-out infinite 0.5s",
+        "particle-5": "particle-float 6.5s ease-in-out infinite 1.5s",
       },
     },
   },
