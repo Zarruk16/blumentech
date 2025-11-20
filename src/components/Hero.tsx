@@ -40,7 +40,7 @@ const Hero = () => {
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 pt-12 border-t border-border/50">
             <div className="animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
-              <div className="text-3xl md:text-4xl font-bold text-gradient mb-2">10+</div>
+              <div className="text-3xl md:text-4xl font-bold text-gradient mb-2">5+</div>
               <div className="text-sm text-muted-foreground">Subsidiaries</div>
             </div>
             <div className="animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
