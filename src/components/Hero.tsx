@@ -1,12 +1,116 @@
 import { ArrowRight, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroBg from "@/assets/hero-bg.jpg";
+import Particles, { initParticlesEngine } from "@tsparticles/react";
+import { useEffect, useMemo, useState } from "react";
+import { loadSlim } from "@tsparticles/slim";
+import type { Engine, MoveDirection, OutMode } from "@tsparticles/engine";
 
 const Hero = () => {
+  const [init, setInit] = useState(false);
+
+  useEffect(() => {
+    initParticlesEngine(async (engine: Engine) => {
+      await loadSlim(engine);
+    }).then(() => {
+      setInit(true);
+    });
+  }, []);
+
+  const particlesOptions = useMemo(
+    () => ({
+      background: {
+        color: {
+          value: "transparent",
+        },
+      },
+      fpsLimit: 120,
+      interactivity: {
+        events: {
+          onClick: {
+            enable: true,
+            mode: "push",
+          },
+          onHover: {
+            enable: true,
+            mode: "repulse",
+          },
+        },
+        modes: {
+          push: {
+            quantity: 4,
+          },
+          repulse: {
+            distance: 100,
+            duration: 0.4,
+          },
+        },
+      },
+      particles: {
+        color: {
+          value: ["#38bdf8", "#22d3ee", "#06b6d4"],
+        },
+        links: {
+          color: "#38bdf8",
+          distance: 150,
+          enable: true,
+          opacity: 0.3,
+          width: 1,
+        },
+        move: {
+          direction: "none" as MoveDirection,
+          enable: true,
+          outModes: {
+            default: "bounce" as OutMode,
+          },
+          random: true,
+          speed: 1.5,
+          straight: false,
+        },
+        number: {
+          density: {
+            enable: true,
+          },
+          value: 150,
+        },
+        opacity: {
+          value: { min: 0.2, max: 0.8 },
+          animation: {
+            enable: true,
+            speed: 1,
+            sync: false,
+          },
+        },
+        shape: {
+          type: ["circle", "triangle"],
+        },
+        size: {
+          value: { min: 1, max: 4 },
+          animation: {
+            enable: true,
+            speed: 3,
+            sync: false,
+          },
+        },
+      },
+      detectRetina: true,
+    }),
+    [],
+  );
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Animated Background */}
       <div className="absolute inset-0">
+        {/* TSParticles Layer */}
+        {init && (
+          <Particles
+            id="tsparticles"
+            options={particlesOptions}
+            className="absolute inset-0 z-10"
+          />
+        )}
+        
         {/* Base Background Image */}
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-50 animate-pulse-slow"

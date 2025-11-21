@@ -1,6 +1,12 @@
 import { Wallet, Database, Activity, Cpu, Building2, Code } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import infrastructureBg from "@/assets/infrastructure-bg.jpg";
+import energyFintechImg from "@/assets/solutions/energy-fintech.jpg";
+import billingCollectionsImg from "@/assets/solutions/billing-collections.jpg";
+import subMeteringImg from "@/assets/solutions/sub-metering.jpg";
+import scadaInfrastructureImg from "@/assets/solutions/scada-infrastructure.jpg";
+import facilityManagementImg from "@/assets/solutions/facility-management.jpg";
+import platformDevelopmentImg from "@/assets/solutions/platform-development.jpg";
 
 const Solutions = () => {
   const solutions = [
@@ -9,36 +15,42 @@ const Solutions = () => {
       title: "Energy-Fintech Solutions",
       description: "Electricity billing, token generation, vending systems, energy marketplace integration, and virtual accounts for revenue collection.",
       features: ["Billing Systems", "Token Vending", "Payment Integration", "Revenue Collection"],
+      image: energyFintechImg,
     },
     {
       icon: Database,
       title: "Billing & Collections Engines",
       description: "Enterprise-grade billing with AI-powered reconciliation, state-wide collection systems, wallet management, and aggregator APIs.",
       features: ["AI Reconciliation", "Multi-tenant Billing", "API Integration", "Wallet Systems"],
+      image: billingCollectionsImg,
     },
     {
       icon: Cpu,
       title: "Sub-Metering & Embedded Systems",
       description: "Multi-user metering, smart meters, IoT gateways, load tracking, and advanced meter-on-chip engineering solutions.",
       features: ["Smart Meters", "IoT Gateways", "Load Management", "Hardware Design"],
+      image: subMeteringImg,
     },
     {
       icon: Activity,
       title: "Energy SCADA & Infrastructure",
       description: "Mini-grid control platforms, real-time power analytics, remote monitoring systems, and substation automation dashboards.",
       features: ["SCADA Control", "Real-time Analytics", "Remote Monitoring", "Automation"],
+      image: scadaInfrastructureImg,
     },
     {
       icon: Building2,
       title: "Facility Management Platforms",
       description: "Digital building management, maintenance scheduling, smart sensor integration, and multi-property dashboards.",
       features: ["Building Management", "Maintenance Systems", "Smart Sensors", "Property Dashboards"],
+      image: facilityManagementImg,
     },
     {
       icon: Code,
       title: "Platform Development for Companies",
       description: "Custom enterprise software, billing systems, fintech platforms, and comprehensive data management with AI solutions.",
       features: ["Custom Software", "Enterprise Platforms", "AI Solutions", "Data Management"],
+      image: platformDevelopmentImg,
     },
   ];
 
@@ -68,13 +80,22 @@ const Solutions = () => {
             return (
               <Card
                 key={index}
-                className="group hover:border-primary/50 transition-all duration-300 bg-card/50 backdrop-blur animate-fade-in-up"
+                className="group hover:border-primary/50 transition-all duration-300 bg-card/50 backdrop-blur animate-fade-in-up overflow-hidden"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <CardHeader>
-                  <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors group-hover:glow-primary">
+                {/* Card Image */}
+                <div className="relative h-48 overflow-hidden">
+                  <div 
+                    className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                    style={{ backgroundImage: `url(${solution.image})` }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card via-card/80 to-transparent" />
+                  <div className="absolute bottom-4 left-4 w-14 h-14 bg-primary/20 backdrop-blur-sm rounded-xl flex items-center justify-center group-hover:bg-primary/30 transition-colors border border-primary/30">
                     <Icon className="w-7 h-7 text-primary" />
                   </div>
+                </div>
+                
+                <CardHeader>
                   <CardTitle className="text-xl">{solution.title}</CardTitle>
                   <CardDescription className="text-base leading-relaxed">{solution.description}</CardDescription>
                 </CardHeader>
