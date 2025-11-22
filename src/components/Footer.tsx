@@ -8,8 +8,8 @@ const Footer = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center justify-center space-y-6">
           <div className="flex items-center space-x-2">
-            <img src={blumenLogo} alt="Blumen Technologies" className="h-8 w-auto" />
-            <span className="text-lg font-display font-bold">
+            <img src={blumenLogo} alt="Blumen Technologies" className="h-5 sm:h-6 md:h-8 w-auto" />
+            <span className="text-sm sm:text-base md:text-lg font-display font-bold">
               BLUMEN <span className="text-primary">TECHNOLOGIES</span>
             </span>
           </div>
