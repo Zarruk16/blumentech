@@ -5,9 +5,13 @@ import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { useEffect, useMemo, useState } from "react";
 import { loadSlim } from "@tsparticles/slim";
 import type { Engine, MoveDirection, OutMode } from "@tsparticles/engine";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const Hero = () => {
   const [init, setInit] = useState(false);
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 500], [0, 150]);
+  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
 
   useEffect(() => {
     initParticlesEngine(async (engine: Engine) => {
@@ -111,10 +115,13 @@ const Hero = () => {
           />
         )}
         
-        {/* Base Background Image */}
-        <div 
+        {/* Base Background Image with Parallax */}
+        <motion.div 
           className="absolute inset-0 bg-cover bg-center opacity-50 animate-pulse-slow"
-          style={{ backgroundImage: `url(${heroBg})` }}
+          style={{ 
+            backgroundImage: `url(${heroBg})`,
+            y,
+          }}
         />
         
         {/* Animated Gradient Overlays */}
@@ -150,8 +157,11 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center max-w-5xl mx-auto animate-fade-in">
+      <motion.div 
+        className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
+        style={{ opacity }}
+      >
+        <div className="text-center max-w-5xl mx-auto">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8 animate-glow-pulse">
             <Zap className="w-4 h-4 text-primary" />
             <span className="text-sm font-medium text-primary">Enterprise Technology Solutions</span>
@@ -198,7 +208,7 @@ const Hero = () => {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

@@ -1,26 +1,39 @@
 import { Building } from "lucide-react";
+import ScrollAnimation from "@/components/ScrollAnimation";
+import wemaBankLogo from "@/assets/partners/ng-wemaba-logo.png";
+import payrepLogo from "@/assets/partners/payrep-logo.webp";
+import stsLogo from "@/assets/partners/STSA-Logo-Trans-scaled.gif";
+import switchboxLogo from "@/assets/partners/switchbox.jpg";
+import braverockLogo from "@/assets/partners/BraveRock-Logo-01.png";
+import seentradLogo from "@/assets/partners/seentrad.webp";
+import gitmatrixLogo from "@/assets/partners/gitmetrics.jpg";
+import quaintEnergyLogo from "@/assets/partners/quaint_energy_cover.jpeg";
+import kadunaElectricLogo from "@/assets/clients/kd.png";
+import amdLogo from "@/assets/clients/amd.png";
+import braverockClientLogo from "@/assets/clients/braverock.png";
+import elevenKeysLogo from "@/assets/clients/elevenkey.png";
 
 const Partners = () => {
   const partners = [
-    "Wema Bank",
-    "Payrep Microfinance",
-    "STS Association",
-    "SwitchBox Limited",
-    "BraveRock Limited",
-    "Seentrad Coating",
-    "Gitmatrix Power & Infrastructure",
-    "Gitmatrix Group",
-    "BlumenPay",
-    "Bluremit",
-    "Blumen Energies Ltd",
-    "Quaint Energy",
+    { name: "Wema Bank", logo: wemaBankLogo },
+    { name: "Payrep Microfinance", logo: payrepLogo },
+    { name: "STS Association", logo: stsLogo },
+    { name: "SwitchBox Limited", logo: switchboxLogo },
+    { name: "BraveRock Limited", logo: braverockLogo },
+    { name: "Seentrad Coating", logo: seentradLogo },
+    { name: "Gitmatrix Power & Infrastructure", logo: gitmatrixLogo },
+    { name: "Gitmatrix Group", logo: gitmatrixLogo },
+    { name: "BlumenPay", logo: null },
+    { name: "Bluremit", logo: null },
+    { name: "Blumen Energies Ltd", logo: null },
+    { name: "Quaint Energy", logo: quaintEnergyLogo },
   ];
 
   const clients = [
-    "Kaduna Electric",
-    "AMD Facility Management Company",
-    "Braverock Residence",
-    "Eleven Keys Limited",
+    { name: "Kaduna Electric", logo: kadunaElectricLogo },
+    { name: "AMD Facility Management Company", logo: amdLogo },
+    { name: "Braverock Residence", logo: braverockClientLogo },
+    { name: "Eleven Keys Limited", logo: elevenKeysLogo },
   ];
 
   return (
@@ -28,58 +41,84 @@ const Partners = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Partners Section */}
         <div className="mb-20">
-          <div className="text-center mb-12">
+          <ScrollAnimation direction="fade" delay={0.2}>
+            <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-6">
               Our <span className="text-gradient">Partners</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Collaborating with industry leaders to deliver excellence
             </p>
-          </div>
+            </div>
+          </ScrollAnimation>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 lg:gap-6">
-            {partners.map((partner, index) => (
-              <div
-                key={index}
-                className="bg-card border border-border rounded-xl p-6 hover:border-primary/50 transition-all duration-300 flex flex-col items-center justify-center text-center group animate-fade-in"
-                style={{ animationDelay: `${index * 0.05}s` }}
-              >
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-colors">
-                  <Building className="w-6 h-6 text-primary" />
+            {partners.map((partner, index) => {
+              const isLargeLogo = partner.name === "Payrep Microfinance" || 
+                                   partner.name === "BraveRock Limited" || 
+                                   partner.name === "Quaint Energy";
+              
+              return (
+                <ScrollAnimation key={index} delay={index * 0.05} direction="up">
+                  <div
+                    className="bg-card border border-border rounded-xl p-6 hover:border-primary/50 transition-all duration-300 flex flex-col items-center justify-center text-center group h-full min-h-[140px]"
+                  >
+                  <div className="w-20 h-20 bg-primary/10 rounded-lg flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-colors overflow-hidden">
+                    {partner.logo ? (
+                      <img 
+                        src={partner.logo} 
+                        alt={partner.name}
+                        className={`w-full h-full object-contain ${isLargeLogo ? 'p-1 scale-110' : 'p-2'}`}
+                      />
+                    ) : (
+                      <Building className="w-6 h-6 text-primary" />
+                    )}
+                  </div>
+                  <span className="text-sm font-medium text-foreground/90 group-hover:text-foreground transition-colors">
+                    {partner.name}
+                  </span>
                 </div>
-                <span className="text-sm font-medium text-foreground/90 group-hover:text-foreground transition-colors">
-                  {partner}
-                </span>
-              </div>
-            ))}
+                </ScrollAnimation>
+              );
+            })}
           </div>
         </div>
 
         {/* Clients Section */}
         <div>
-          <div className="text-center mb-12">
+          <ScrollAnimation direction="fade" delay={0.2}>
+            <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-6">
               Our <span className="text-gradient">Clients</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Trusted by leading organizations across Africa
             </p>
-          </div>
+            </div>
+          </ScrollAnimation>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 max-w-4xl mx-auto">
             {clients.map((client, index) => (
-              <div
-                key={index}
-                className="bg-card border border-border rounded-xl p-8 hover:border-primary/50 transition-all duration-300 flex flex-col items-center justify-center text-center group animate-fade-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors group-hover:glow-primary">
-                  <Building className="w-8 h-8 text-primary" />
+              <ScrollAnimation key={index} delay={index * 0.1} direction="up">
+                <div
+                  className="bg-card border border-border rounded-xl p-8 hover:border-primary/50 transition-all duration-300 flex flex-col items-center justify-center text-center group h-full min-h-[180px]"
+                >
+                <div className="w-20 h-20 bg-primary/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors group-hover:glow-primary overflow-hidden">
+                  {client.logo ? (
+                    <img 
+                      src={client.logo} 
+                      alt={client.name}
+                      className="w-full h-full object-contain p-2"
+                    />
+                  ) : (
+                    <Building className="w-8 h-8 text-primary" />
+                  )}
                 </div>
                 <span className="text-base font-semibold text-foreground group-hover:text-primary transition-colors">
-                  {client}
+                  {client.name}
                 </span>
               </div>
+              </ScrollAnimation>
             ))}
           </div>
         </div>

@@ -1,4 +1,5 @@
 import { Network, Shield, Zap, Globe } from "lucide-react";
+import ScrollAnimation from "@/components/ScrollAnimation";
 
 const About = () => {
   const features = [
@@ -28,7 +29,8 @@ const About = () => {
     <section id="about" className="py-20 md:py-32 bg-muted/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
+          <ScrollAnimation direction="fade" delay={0.2}>
+            <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-6">
               Building Africa's <span className="text-gradient">Tech Infrastructure</span>
             </h2>
@@ -37,23 +39,24 @@ const About = () => {
               Fintech, Billing, SCADA, Sub-metering, Facility Management, and custom platform development 
               for enterprises and governments.
             </p>
-          </div>
+            </div>
+          </ScrollAnimation>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {features.map((feature, index) => {
               const Icon = feature.icon;
               return (
-                <div
-                  key={index}
-                  className="bg-card border border-border rounded-xl p-6 hover:border-primary/50 transition-all duration-300 group animate-fade-in-up"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
+                <ScrollAnimation key={index} delay={index * 0.1} direction="up">
+                  <div
+                    className="bg-card border border-border rounded-xl p-6 hover:border-primary/50 transition-all duration-300 group"
+                  >
                   <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
                     <Icon className="w-6 h-6 text-primary" />
                   </div>
                   <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
                   <p className="text-sm text-muted-foreground">{feature.description}</p>
                 </div>
+                </ScrollAnimation>
               );
             })}
           </div>

@@ -2,7 +2,7 @@ import { Wallet, Database, Activity, Cpu, Building2, Code, ChevronDown, ArrowRig
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import infrastructureBg from "@/assets/infrastructure-bg.jpg";
 import energyFintechImg from "@/assets/solutions/energy-fintech.jpg";
 import billingCollectionsImg from "@/assets/solutions/billing-collections.jpg";
@@ -10,9 +10,17 @@ import subMeteringImg from "@/assets/solutions/sub-metering.jpg";
 import scadaInfrastructureImg from "@/assets/solutions/scada-infrastructure.jpg";
 import facilityManagementImg from "@/assets/solutions/facility-management.jpg";
 import platformDevelopmentImg from "@/assets/solutions/platform-development.jpg";
+import ScrollAnimation from "@/components/ScrollAnimation";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const Solutions = () => {
   const [openCards, setOpenCards] = useState<number[]>([]);
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+  const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
 
   const toggleCard = (index: number) => {
     setOpenCards(prev => 
@@ -151,35 +159,40 @@ const Solutions = () => {
   ];
 
   return (
-    <section id="solutions" className="py-20 md:py-32 bg-background relative overflow-hidden">
-      {/* Background Image */}
+    <section ref={sectionRef} id="solutions" className="py-20 md:py-32 bg-background relative overflow-hidden">
+      {/* Background Image with Parallax */}
       <div className="absolute inset-0">
-        <div 
+        <motion.div 
           className="absolute inset-0 bg-cover bg-center opacity-10"
-          style={{ backgroundImage: `url(${infrastructureBg})` }}
+          style={{ 
+            backgroundImage: `url(${infrastructureBg})`,
+            y,
+          }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background" />
       </div>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-16">
+        <ScrollAnimation direction="fade" delay={0.2}>
+          <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-6">
             Core <span className="text-gradient">Business Domains</span>
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
             Comprehensive technology solutions across multiple sectors
           </p>
-        </div>
+          </div>
+        </ScrollAnimation>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {solutions.map((solution, index) => {
             const Icon = solution.icon;
             const isOpen = openCards.includes(index);
             return (
-              <Collapsible key={index} open={isOpen} onOpenChange={() => toggleCard(index)}>
-                <Card
-                  className="group hover:border-primary/50 transition-all duration-300 bg-card/50 backdrop-blur animate-fade-in-up overflow-hidden"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
+              <ScrollAnimation key={index} delay={index * 0.1} direction="up">
+                <Collapsible open={isOpen} onOpenChange={() => toggleCard(index)}>
+                  <Card
+                    className="group hover:border-primary/50 transition-all duration-300 bg-card/50 backdrop-blur overflow-hidden"
+                  >
                   {/* Card Image */}
                   <div className="relative h-48 overflow-hidden">
                     <div 
@@ -277,6 +290,7 @@ const Solutions = () => {
                   </CardContent>
                 </Card>
               </Collapsible>
+              </ScrollAnimation>
             );
           })}
         </div>

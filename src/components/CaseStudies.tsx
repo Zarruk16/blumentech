@@ -1,6 +1,7 @@
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import ScrollAnimation from "@/components/ScrollAnimation";
 
 const CaseStudies = () => {
   const cases = [
@@ -53,22 +54,23 @@ const CaseStudies = () => {
   return (
     <section id="cases" className="py-20 md:py-32 bg-muted/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <ScrollAnimation direction="fade" delay={0.2}>
+          <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-6">
             Success <span className="text-gradient">Stories</span>
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
             Real results from our enterprise clients
           </p>
-        </div>
+          </div>
+        </ScrollAnimation>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {cases.map((caseStudy, index) => (
-            <Card
-              key={index}
-              className="group hover:border-primary/50 transition-all duration-300 bg-card/50 backdrop-blur animate-fade-in-up"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
+            <ScrollAnimation key={index} delay={index * 0.1} direction="up">
+              <Card
+                className="group hover:border-primary/50 transition-all duration-300 bg-card/50 backdrop-blur"
+              >
               <CardHeader>
                 <div className="flex items-start justify-between mb-2">
                   <span className="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full border border-primary/20">
@@ -96,6 +98,7 @@ const CaseStudies = () => {
                 </Button>
               </CardContent>
             </Card>
+            </ScrollAnimation>
           ))}
         </div>
       </div>

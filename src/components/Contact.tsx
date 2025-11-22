@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import ScrollAnimation from "@/components/ScrollAnimation";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -30,18 +31,21 @@ const Contact = () => {
   return (
     <section id="contact" className="py-20 md:py-32 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <ScrollAnimation direction="fade" delay={0.2}>
+          <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-6">
             Let's Build Africa's <span className="text-gradient">Digital Future</span>
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
             Partner with us to transform your infrastructure with cutting-edge technology
           </p>
-        </div>
+          </div>
+        </ScrollAnimation>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Info */}
-          <div className="space-y-8">
+          <ScrollAnimation direction="right" delay={0.3}>
+            <div className="space-y-8">
             <div>
               <h3 className="text-2xl font-display font-bold mb-6">Get in Touch</h3>
               <p className="text-muted-foreground mb-8">
@@ -88,9 +92,11 @@ const Contact = () => {
               </Button>
             </div>
           </div>
+          </ScrollAnimation>
 
           {/* Contact Form */}
-          <div className="bg-card border border-border rounded-2xl p-8">
+          <ScrollAnimation direction="left" delay={0.4}>
+            <div className="bg-card border border-border rounded-2xl p-8">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium mb-2">
@@ -158,6 +164,7 @@ const Contact = () => {
               </Button>
             </form>
           </div>
+          </ScrollAnimation>
         </div>
       </div>
     </section>
