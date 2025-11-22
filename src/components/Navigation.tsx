@@ -23,7 +23,7 @@ const Navigation = () => {
           <div className="flex items-center space-x-1 sm:space-x-2 min-w-0 flex-shrink">
             <img src={blumenLogo} alt="Blumen Technologies" className="h-6 sm:h-7 md:h-8 lg:h-10 w-auto flex-shrink-0" />
             <span className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-display font-bold text-foreground whitespace-nowrap">
-              <span className="hidden sm:inline">BLUMEN </span><span className="text-primary hidden sm:inline">TECHNOLOGIES</span>
+              <span>BLUMEN </span><span className="text-primary">TECHNOLOGIES</span>
             </span>
           </div>
 

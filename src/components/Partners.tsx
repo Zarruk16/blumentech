@@ -8,6 +8,9 @@ import braverockLogo from "@/assets/partners/BraveRock-Logo-01.png";
 import seentradLogo from "@/assets/partners/seentrad.webp";
 import gitmatrixLogo from "@/assets/partners/gitmetrics.jpg";
 import quaintEnergyLogo from "@/assets/partners/quaint_energy_cover.jpeg";
+import blumenPayLogo from "@/assets/partners/blumenpay.svg";
+import bluremitLogo from "@/assets/partners/bluremit.svg";
+import blumenEnergiesLogo from "@/assets/partners/blumenenergies.png";
 import kadunaElectricLogo from "@/assets/clients/kd.png";
 import amdLogo from "@/assets/clients/amd.png";
 import braverockClientLogo from "@/assets/clients/braverock.png";
@@ -23,9 +26,9 @@ const Partners = () => {
     { name: "Seentrad Coating", logo: seentradLogo },
     { name: "Gitmatrix Power & Infrastructure", logo: gitmatrixLogo },
     { name: "Gitmatrix Group", logo: gitmatrixLogo },
-    { name: "BlumenPay", logo: null },
-    { name: "Bluremit", logo: null },
-    { name: "Blumen Energies Ltd", logo: null },
+    { name: "BlumenPay", logo: blumenPayLogo },
+    { name: "Bluremit", logo: bluremitLogo },
+    { name: "Blumen Energies Ltd", logo: blumenEnergiesLogo },
     { name: "Quaint Energy", logo: quaintEnergyLogo },
   ];
 
