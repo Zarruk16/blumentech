@@ -81,7 +81,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold mb-1">Location</h4>
-                  <p className="text-muted-foreground">Lagos, Nigeria</p>
+                  <p className="text-muted-foreground">FCT Abuja, Nigeria</p>
                 </div>
               </div>
             </div>

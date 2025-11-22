@@ -30,6 +30,23 @@
 
   <body>
     <div id="root"></div>
+    <script>
+      // Unregister any service workers that might be causing issues
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function(registrations) {
+          for(let registration of registrations) {
+            registration.unregister();
+          }
+        });
+      }
+      // Suppress errors from configure-three.vercel.app
+      window.addEventListener('error', function(e) {
+        if (e.message && e.message.includes('configure-three.vercel.app')) {
+          e.preventDefault();
+          return false;
+        }
+      }, true);
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
