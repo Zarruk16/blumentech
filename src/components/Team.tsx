@@ -8,6 +8,7 @@ import drabdulImage from "@/assets/team/drabdul.png";
 import nainiImage from "@/assets/team/naini.jpeg";
 import aliyuImage from "@/assets/team/aliyu.jpg";
 import abdulkadirImage from "@/assets/team/abdulkadir.png";
+import kambaImage from "@/assets/team/kamba.jpeg";
 
 interface TeamMember {
   name: string;
@@ -55,6 +56,7 @@ const Team = () => {
       bio: "Strategic compliance and intelligence leader specializing in regulatory compliance, strategic planning, and data intelligence mapping. Expert in developing comprehensive compliance frameworks, risk assessment methodologies, and intelligence systems for technology operations. Drives organizational planning initiatives, regulatory adherence, and data-driven decision-making processes. Committed to ensuring operational excellence through effective compliance management and strategic intelligence mapping across all business units.",
       email: "abdullahi@blumentechnologies.com",
       linkedin: "#",
+      image: kambaImage,
     },
     {
       name: "Dr. Abdurahman Chikaire",
